@@ -1,0 +1,13 @@
+{
+  "DDD_alpha": 0.15,
+  "E_Planck_GeV": 1.22e+19,
+  "E_QG_2_DDD_GeV": 3.1500264549153657e+19,
+  "Vasileiou_E_QG_1_lower_GeV": 9.272e+19,
+  "Vasileiou_E_QG_2_lower_GeV": 120000000000.0,
+  "ratio_DDD_to_bound": 262502204.57628047,
+  "compatibility": "DDD is compatible (E_QG_2_DDD above bound)",
+  "delta_v_c_at_30GeV_DDD": 9.070142434829345e-37,
+  "delta_v_c_at_30GeV_bound": 6.25e-20,
+  "n1_term": "DDD predicts none (parabolic linear regime)",
+  "verdict": "Compatible with Fermi-LAT bounds at all current energies; falsifiable at 30 GeV if Delta v/c reaches ~alpha*(E/E_Planck)^2 level."
+}

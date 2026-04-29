@@ -1,0 +1,35 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Truncated intermediate versions (cleanup artefacts)
+paper_v*.tex
+paper_v*.pdf
+paper_v*.aux
+paper_v*.bbl
+paper_v*.blg
+paper_v*.log
+paper_v*.out
+references.bib.tmp
+
+# Python artefacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Local simulation outputs not part of the paper data
+v7_rule_L*_tau*_E*_n*.json
+result_L*.txt
+G_measurement_L*_N*.txt
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+desktop.ini
