@@ -86,6 +86,44 @@ non-negativity, rest level $R_0$, two-step alternation,
 rate-limited fluxes) that make the rule non-trivial in the
 regimes explored in the companion papers.
 
+\subsection*{Motivation and significance}
+\addcontentsline{toc}{subsection}{Motivation and significance}
+
+The purpose of this paper is \emph{not} to rediscover the
+$1/r$ potential. Any linear diffusion or graph-Laplacian model
+in three dimensions has a Green function with this behaviour.
+The purpose is instead to define a local, conservative substrate
+rule whose weak-field limit reduces to the discrete Poisson
+equation, while retaining \emph{finite-resource} structure
+outside that limit.
+
+This distinction matters for the rest of the DDD programme. A
+plain heat equation can reproduce $1/r$, but it has no physical
+floor, no finite local budget, no source-side mobility, and no
+natural saturation regime. The rule introduced here adds these
+ingredients: every node carries a non-negative reserve $R \geq
+0$, every outgoing flux is rate-limited by the available local
+budget, and the mobility $\mu(R)$ controls how the source
+node's reserve modulates emission. These are the substrate
+features on which the companion papers depend.
+
+The baseline $\mu \equiv 1$ studied in this paper is therefore
+a \emph{calibration and validation regime}. It verifies that the
+rule reduces to the expected Poisson behaviour when the
+finite-resource constraint is inactive. The non-trivial physics
+begins when $\mu(R) \neq 1$ (Paper~II's clock-rate suppression
+and Schwarzschild geometry), or when the reserve floor $R = 0$
+becomes active (saturation, horizon-like bandwidth limit), or
+when the spinor and gauge-sector back-reactions of Papers~III,
+VI, and VII activate. Paper~I supplies the conservative local
+substrate on which they all depend.
+
+A diagnostic of this finite-resource structure is that
+superposition of source profiles, exact in the linear regime,
+must \emph{break down locally} when the reserve floor or the
+mobility nonlinearity becomes active. We exhibit this directly
+in \S\ref{sec:two-source} as a sanity check.
+
 \section{The picture, in plain words}
 \label{sec:picture}
 
@@ -117,10 +155,10 @@ zero, and emission from that node stops. In this regime the
 rule is no longer a discrete heat equation: it is a non-linear
 update with a finite-resource bound. The companion papers
 explore those regimes (Schwarzschild-form behaviour in
-Paper~II, cosmogenetic regime in Paper~III, gauge sector in
-Papers~V--VI). The present paper is restricted to the
-linearised regime with $\mu \equiv 1$, where the rule
-reproduces $1/r$.
+Paper~II, Floquet spinor sector in Paper~III, gauge sector in
+Paper~VI, gravity-gauge coupling in Paper~VII). The present
+paper is restricted to the linearised regime with
+$\mu \equiv 1$, where the rule reproduces $1/r$.
 
 \section{The substrate}
 \label{sec:substrate}
@@ -356,6 +394,69 @@ IR limit on both substrates. Newtonian gravity recovered.}
 \label{tab:dscomp}
 \end{table}
 
+\subsection{Two-source superposition and onset of finite-resource effects}
+\label{sec:two-source}
+
+As a second sanity check that distinguishes the DDD rule from a
+plain graph-Laplacian, we place two identical point sinks at
+separation $d = 8$ lattice spacings and compare the steady-state
+deficit field $\delta_{12}$ with the linear superposition
+$\delta_1 + \delta_2$ obtained from two independent one-source
+runs.
+
+\textbf{Linear regime ($\mu = 1$, weak sinks).} For sink
+strength $0.001$, the reserve floor is never approached
+($R_{\min} \simeq R_0 - \mathcal{O}(10^{-4})$, with
+$R_{\min}/R_0 > 0.999$ everywhere), the rate-limiter
+$\beta_i \equiv 1$ throughout, and the rule reduces to the
+discrete Poisson equation. The relative residual
+$\max|\delta_{12} - (\delta_1 + \delta_2)| / \max\delta_{12}$
+is $5.4 \times 10^{-3}$, attributable entirely to lattice and
+boundary truncation. Superposition holds.
+
+\textbf{Saturating regime (rate-limiter active).} For sink
+strength $12$, the reserve at each source is driven down to the
+floor $R = 0$. The rate-limiter
+$\beta_i = \min(1, A_i/D_i)$ (where $A_i$ is the available
+reserve and $D_i$ is the demand from outgoing fluxes plus
+external sinks at node $i$) drops below $1$ at depleted nodes,
+capping the outgoing flux, and the steady-state field no longer
+obeys superposition: the relative residual rises to
+$2.7 \times 10^{-2}$, an order of magnitude above the
+lattice-error baseline, and is concentrated near the saturated
+sources where $\delta_1$ and $\delta_2$ would otherwise have
+added linearly.
+
+This contrast --- $\sim 0.5\%$ residual when the floor is
+inactive vs $\sim 3\%$ when it is active --- is the diagnostic
+signature of finite-resource physics that motivates the rule.
+The deviation is not a numerical defect; it is the substrate
+correctly refusing to deliver more flux than its local reserve
+permits. Figure~\ref{fig:two-source} displays the central
+slice of both regimes side-by-side.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig11_two_source.pdf}
+\caption{Two-source superposition test. \textbf{Top row (A)},
+linear regime ($\mu = 1$, weak sinks): the two-source deficit
+$\delta_{12}$ (left), the superposition $\delta_1 + \delta_2$
+(centre), and the residual (right). The residual is at the
+$0.5\%$ level and consists entirely of lattice/boundary error.
+\textbf{Bottom row (B)}, saturating regime (rate-limiter
+active): the residual rises to $2.7\%$ and is localised at the
+sources where the reserve floor caps the outgoing flux.
+\emph{Heatmap + equipotentials}: white contour lines mark
+log-spaced equipotentials of the deficit field; on the
+residual panel, the black contour is the zero line and the
+red/blue contours mark $\pm 50\%$ of the residual maximum.
+Source positions marked with yellow circles. Plane shown is
+$z = z_{\rm centre}$. Colourmaps: viridis for absolute
+deficit, RdBu for the residual (symmetric about zero).
+Reproducible via \texttt{code/11\_two\_source\_superposition.py}.}
+\label{fig:two-source}
+\end{figure}
+
 \subsection{Code and data availability}
 
 Scripts available at
@@ -427,30 +528,75 @@ paper.
 \label{sec:outlook}
 
 \begin{enumerate}
-\item Paper~II --- static spherical $g_{00}$-like clock-rate
-factor with the source-side bandwidth-throttled mobility
-$\mu(R) = R/R_0$, yielding a Schwarzschild-like time-dilation
-factor in the continuum limit.
-\emph{Conditional on $\mu(R) = R/R_0$ and on the
-bandwidth-time identification.}
-\item Paper~III --- discrete-time response and inertial
-effects. \emph{Speculative.}
-\item Paper~IV --- predictions and tests of the gravitational
-sector. \emph{Mixed.}
-\item Paper~V --- the gauge sector $(T, I, \psi)$ and emergent
-electromagnetism. \emph{Speculative; coefficients
-uncalibrated.}
-\item Further exploratory notes (Papers~VI and onward) address
-coupling, cosmology, quantum phenomenology, particle structure,
-and condensed-matter analogies. \emph{Increasingly
-speculative.}
+\item \textbf{Paper~II} --- the source-side reserve-proportional
+mobility $\mu(R) = R/R_0$ yields a Schwarzschild-like static
+clock-rate factor in the spherical continuum limit, recovering
+weak-field general-relativistic time dilation from the local
+substrate rule. \emph{Conditional on the mobility choice and
+on the bandwidth-time identification.}
+\item \textbf{Paper~III} --- a Floquet two-step spinor sector
+on the same substrate supports propagating localised
+excitations and an operational, kinematic Lorentz-like
+clock-rate.
+\item \textbf{Paper~IV} --- calibrates the photon-substrate
+coupling against the static spherical sector and reproduces
+light deflection and Shapiro delay at the percent level.
+\item \textbf{Paper~V} --- collects candidate predictions and
+falsification windows of the gravitational sector (Yukawa
+bounds, short-range tests, feedback-mediated effects).
+\item \textbf{Paper~VI} --- extends the substrate with a
+compact U(1) oriented sector, derives Maxwell-like dynamics in
+the weak-field limit, and proposes a candidate fixed-point
+formula for the fine-structure constant
+$\alpha_{\rm EM} \simeq 1/137$ based on the body-diagonal
+Wilson loop self-energy.
+\item \textbf{Paper~VII} --- studies the joint Wilson-loop
+back-reaction of gravity and electromagnetism at the substrate
+scale, predicting a structural ratio
+$\alpha_G/\alpha_{\rm EM} = 1/\sqrt{2}$ and cross-coupling
+consequences observable in atomic clocks and cosmological
+$\dot\alpha/\alpha$.
 \end{enumerate}
 
-The reader should expect the support for our claims to weaken
-as the series progresses. The present paper, Paper~I, claims
-only the rule itself (with constant-mobility baseline) and the
-linearised $1/r$ verification. The rest is what one might do
-with such a rule.
+The present paper, Paper~I, supplies only the bounded
+conservative local rule and its constant-mobility Poisson
+baseline, validated by the $1/r$ verification of \S6 and by
+the two-source superposition sanity check of
+\S\ref{sec:two-source}. The support level and speculative
+content vary across the later papers and are stated explicitly
+in each.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
+ure constant
+$\alpha_{\rm EM} \simeq 1/137$ based on the body-diagonal
+Wilson loop self-energy.
+\item \textbf{Paper~VII} --- studies the joint Wilson-loop
+back-reaction of gravity and electromagnetism at the substrate
+scale, predicting a structural ratio
+$\alpha_G/\alpha_{\rm EM} = 1/\sqrt{2}$ and cross-coupling
+consequences observable in atomic clocks and cosmological
+$\dot\alpha/\alpha$.
+\end{enumerate}
+
+The present paper, Paper~I, supplies only the bounded
+conservative local rule and its constant-mobility Poisson
+baseline, validated by the $1/r$ verification of \S6 and by
+the two-source superposition sanity check of
+\S\ref{sec:two-source}. The support level and speculative
+content vary across the later papers and are stated explicitly
+in each.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
+ce superposition sanity check of
+\S\ref{sec:two-source}. The support level and speculative
+content vary across the later papers and are stated explicitly
+in each.
 
 \bibliographystyle{unsrt}
 \bibliography{references}
