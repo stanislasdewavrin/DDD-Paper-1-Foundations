@@ -1,0 +1,32 @@
+{
+  "L": 41,
+  "sep": 8,
+  "p1": [
+    16,
+    20,
+    20
+  ],
+  "p2": [
+    24,
+    20,
+    20
+  ],
+  "regimes": [
+    {
+      "label": "A_linear",
+      "strength": 0.001,
+      "saturate": false,
+      "def_max": 0.00023746039107652717,
+      "rel_err_max": 0.005347536954774106,
+      "min_reserve": 0.9997625396089235
+    },
+    {
+      "label": "B_saturating",
+      "strength": 12.0,
+      "saturate": true,
+      "def_max": 1.0,
+      "rel_err_max": 0.027063879468853358,
+      "min_reserve": 0.0
+    }
+  ]
+}
