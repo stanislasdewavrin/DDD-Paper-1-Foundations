@@ -33,3 +33,7 @@ G_measurement_L*_N*.txt
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Work artifacts (peer-review iterations, intermediate builds, scripts)
+feedback_loop/
+reviews/
