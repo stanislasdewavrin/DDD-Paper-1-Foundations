@@ -1,0 +1,79 @@
+Cover Letter --- submission of:
+"Discrete Drainage Dynamics:
+A Bounded, Conservative Local Rule for
+Newtonian-Like Potentials"
+
+Stanislas de Wavrin
+Independent researcher
+dewavrin.iphone@gmail.com
+2 May 2026
+
+To the Editor,
+
+I would like to submit the enclosed manuscript for consideration. Below
+I summarise the contribution and why I believe it is timely.
+
+==========================================================================
+SUMMARY
+==========================================================================
+
+I introduce the Discrete Drainage Dynamics (DDD) framework: a strictly local, conservative, sign-respecting update rule on a random geometric graph (Poisson-disk lattice) that produces a non-negative reserve field R_i. Numerical experiments show that, in the static spherical sector, R(r) converges to a 1/r profile to sub-percent accuracy, providing the foundation for the gravitational sector developed in Paper II. Two-source experiments confirm the expected superposition. The rule is the entry point of the ten-paper DDD series.
+
+==========================================================================
+WHY THIS MATTERS
+==========================================================================
+
+Lattice approaches to gravity (Regge calculus, causal dynamical triangulations, causal sets) typically derive geometry from combinatorics. DDD takes the orthogonal route: a local conservation law on a fixed graph that produces a Newtonian profile by construction, with no metric input. The result is a minimal substrate from which the rest of the series builds gravity, electromagnetism, and cosmology.
+
+==========================================================================
+NOVELTY
+==========================================================================
+
+First-principles introduction of the conservative drainage rule R_i = (1/d_i) sum_j R_j with non-negativity floor. Analytical derivation of the static spherical solution. Numerical demonstration of 1/r convergence on Poisson-disk lattices with N up to 16,000. Two-source superposition test with equipotential overlay.
+
+==========================================================================
+SUBMISSION STRATEGY
+==========================================================================
+
+This manuscript is Paper I of a planned ten-paper series on
+Discrete Drainage Dynamics (DDD). The series is organised so each
+paper has a clean, falsifiable claim of its own; the present paper
+can be read independently of the others, with explicit cross-
+references to its companions where needed.
+
+I am happy to follow whichever route the editor prefers: standalone
+submission of the present paper, or coordinated submission as part
+of the series.
+
+==========================================================================
+DATA AND CODE
+==========================================================================
+
+All simulation code, data, and analysis scripts accompanying this
+paper are available in the supplementary material and will be
+released on the author's public repository upon acceptance.
+
+==========================================================================
+SUGGESTED REFEREES
+==========================================================================
+
+[To be filled by the author at the time of submission, with
+2--3 referees working in the relevant area.]
+
+==========================================================================
+DECLARATIONS
+==========================================================================
+
+  - The author declares no competing financial interests.
+  - The work has not been previously published, and is not under
+    consideration elsewhere.
+  - All simulations were performed by the author on a personal
+    computer.
+  - The author is an independent researcher with no institutional
+    affiliation.
+
+I look forward to your feedback.
+
+With kind regards,
+
+Stanislas de Wavrin
